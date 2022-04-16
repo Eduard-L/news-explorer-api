@@ -37,8 +37,8 @@ app.use(errors());
 
 app.use(handleErrors);
 
-if (NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`everything works at port ${PORT}`);
-  });
-}
+// if (NODE_ENV !== 'production') {
+app.listen(PORT, () => {
+  console.log(`everything works at port ${PORT}`);
+});
+// }

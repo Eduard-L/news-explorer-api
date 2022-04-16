@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/af275937-4ba4-4307-8a5c-d774216f6f1e/resourceGroups/practicum/providers/Microsoft.Web/sites/news-explorer",
+    "appService.deploySubpath": "."
+}
