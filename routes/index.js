@@ -28,6 +28,6 @@ mainRouter.use(auth);
 
 mainRouter.use('/users', usersRouter);
 mainRouter.use('/articles', articlesRouter);
-mainRouter.use(nonExcistPage)
+mainRouter.use(nonExcistPage);
 
 module.exports = { mainRouter };
