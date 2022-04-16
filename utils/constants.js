@@ -4,10 +4,11 @@ const User = require('../models/user');
 const Article = require('../models/article');
 
 const {
-  NODE_ENV, PORT, JWT_SECRET,
+  NODE_ENV, JWT_SECRET,
 } = process.env;
 
 const SALT = 10;
+const PORT = 3000;
 
 const DEFAULTERROR_CODE = 500;
 const DEFAULTERROR_MESSAGE = 'something went wrong with the server';
