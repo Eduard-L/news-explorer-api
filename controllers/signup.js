@@ -1,12 +1,14 @@
 const { ConflictError, BadRequestError } = require('../utils/ErrorHandler');
-const { SALT, User, bcrypt } = require('../utils/constants');
+const {
+  SALT, User, bcrypt, DATA_INVALID_MESSAGE, CONFLICT_ERROR_MESSAGE,
+} = require('../utils/constants');
 
 const signUp = async (req, res, next) => {
   const { name, email, password } = req.body;
   try {
     const isUserExcist = await User.findOne({ email });
     if (isUserExcist) {
-      next(new ConflictError('this user already excist'));
+      next(new ConflictError(`${CONFLICT_ERROR_MESSAGE}`));
       return;
     }
     const hashPass = await bcrypt.hash(password, SALT);
@@ -22,7 +24,7 @@ const signUp = async (req, res, next) => {
     }
   } catch (e) {
     if (e.name === 'ValidationError') {
-      next(new BadRequestError('your data is invalid'));
+      next(new BadRequestError(`${DATA_INVALID_MESSAGE}`));
       return;
     }
     next(e);

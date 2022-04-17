@@ -1,4 +1,4 @@
-const { User } = require('../utils/constants');
+const { User, DATA_INVALID_MESSAGE, NOT_FOUND_MESSAGE } = require('../utils/constants');
 const { NotFoundError, BadRequestError } = require('../utils/ErrorHandler');
 
 const getUserInfo = async (req, res, next) => {
@@ -7,7 +7,7 @@ const getUserInfo = async (req, res, next) => {
   try {
     const user = await User.findById(_id);
     if (user === null) {
-      next(new NotFoundError('user has not been founded'));
+      next(new NotFoundError(`${NOT_FOUND_MESSAGE}`));
       return;
     }
     if (user) {
@@ -15,7 +15,7 @@ const getUserInfo = async (req, res, next) => {
     }
   } catch (e) {
     if (e.name === 'CastError') {
-      next(new BadRequestError('your data is invalid'));
+      next(new BadRequestError(`${DATA_INVALID_MESSAGE}`));
       return;
     }
     next(e);

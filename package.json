@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/Eduard-L/news-explorer-api/issues"
   },
-  "homepage": "https://github.com/Eduard-L/news-explorer-api#readme",
+  "homepage": "https://api.news-searcher.students.nomoreparties.sbs",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",

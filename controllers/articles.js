@@ -1,4 +1,6 @@
-const { Article } = require('../utils/constants');
+const {
+  Article, DATA_INVALID_MESSAGE, NOT_FOUND_MESSAGE, PERMISSION_ERROR_MESSAGE,
+} = require('../utils/constants');
 const { BadRequestError, NotFoundError, ForbiddentError } = require('../utils/ErrorHandler');
 
 const createArticle = async (req, res, next) => {
@@ -18,7 +20,7 @@ const createArticle = async (req, res, next) => {
     }
   } catch (e) {
     if (e.name === 'ValidationError') {
-      next(new BadRequestError('your data is invalid'));
+      next(new BadRequestError(`${DATA_INVALID_MESSAGE}`));
       return;
     }
     next(e);
@@ -48,13 +50,13 @@ const deleteArticle = async (req, res, next) => {
   try {
     const articleForDelete = await Article.findById(id).select('+owner');
     if (articleForDelete === null) {
-      next(new NotFoundError('you are trying to delete article that isnt excist'));
+      next(new NotFoundError(`${NOT_FOUND_MESSAGE}`));
       return;
     }
 
     const articlesOwner = articleForDelete.owner.toHexString();
     if (articlesOwner !== _id) {
-      next(new ForbiddentError('you not have permission to delete article'));
+      next(new ForbiddentError(`${PERMISSION_ERROR_MESSAGE}`));
       return;
     }
 
@@ -64,7 +66,7 @@ const deleteArticle = async (req, res, next) => {
     }
   } catch (e) {
     if (e.name === 'CastError') {
-      next(new BadRequestError('your data in invalid'));
+      next(new BadRequestError(`${DATA_INVALID_MESSAGE}`));
       return;
     }
     next(e);
