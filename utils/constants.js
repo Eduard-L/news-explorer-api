@@ -4,10 +4,10 @@ const User = require('../models/user');
 const Article = require('../models/article');
 
 const {
-  NODE_ENV, JWT_SECRET, PORT
+  NODE_ENV, JWT_SECRET,
 } = process.env;
 
-const SALT = 10;
+const { SALT = 10, PORT = 3000 } = process.env
 
 
 const DEFAULTERROR_CODE = 500;
