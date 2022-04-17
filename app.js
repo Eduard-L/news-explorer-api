@@ -40,7 +40,7 @@ app.use(handleErrors);
 
 
 if (NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
+  app.listen(PORT || 3000, () => {
     console.log(`everything works at port ${PORT}`);
   });
 }
