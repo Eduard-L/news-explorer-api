@@ -16,9 +16,11 @@ const signIn = async (req, res, next) => {
       res.status(200).send(token);
     } else {
       next(new Unauthorized('your password or email are wrong'));
+      return
     }
   } catch (e) {
     next(new Unauthorized('your password or email are wrong'));
+    return
   }
 };
 module.exports = { signIn };

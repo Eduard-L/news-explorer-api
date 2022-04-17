@@ -7,6 +7,7 @@ const auth = async (req, res, next) => {
   try {
     if (!authorization || !authorization.startsWith('Bearer ')) {
       next(new Unauthorized('Authorization required'));
+      return;
     }
     const token = authorization.replace('Bearer ', '');
 
@@ -15,6 +16,7 @@ const auth = async (req, res, next) => {
       req.user = payload;
     } else {
       next(new Unauthorized('Authorization required'));
+      return
     }
   } catch (e) {
     next(e);
