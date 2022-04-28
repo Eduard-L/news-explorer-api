@@ -4,7 +4,7 @@ const User = require('../models/user');
 const Article = require('../models/article');
 
 const {
-  NODE_ENV, JWT_SECRET, SALT = 10, PORT = 3000,
+  NODE_ENV, JWT_SECRET, SALT = 10, PORT = 3000, MONGO_ADRESS
 } = process.env;
 
 const UNAUTHORIZED_MESSAGE = 'Authorization required';
@@ -19,6 +19,7 @@ const PERMISSION_ERROR_MESSAGE = 'permission denied';
 module.exports = {
   NODE_ENV,
   PORT,
+  MONGO_ADRESS,
   PERMISSION_ERROR_MESSAGE,
   CONFLICT_ERROR_MESSAGE,
   NOT_FOUND_MESSAGE,

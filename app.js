@@ -15,6 +15,7 @@ const { limiter } = require('./helpers/limiter');
 
 mongoose.connect('mongodb://localhost:27017/newsdb');
 
+
 app.use(limiter);
 
 app.use(helmet());
