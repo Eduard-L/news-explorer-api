@@ -14,7 +14,7 @@ const signIn = async (req, res, next) => {
 
     const user = await User.findUserByCredentials(email, password);
     if (user) {
-      const token = await jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: 3600 });
+      const token = await jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
       res.status(200).json(token);
     } else {
       next(new Unauthorized(`${WRONG_LOGIN_MESSAGE}`));
