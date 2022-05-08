@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { Unauthorized } = require('../utils/ErrorHandler');
-const { JWT_SECRET, NODE_ENV, UNAUTHORIZED_MESSAGE } = require('../utils/constants');
+const { JWT_SECRET, NODE_ENV, UNAUTHORIZED_MESSAGE, SECRET_KEY_DEV_MODE } = require('../utils/constants');
 
 const auth = async (req, res, next) => {
   const { authorization } = req.headers;
@@ -11,7 +11,7 @@ const auth = async (req, res, next) => {
     }
     const token = authorization.replace('Bearer ', '');
 
-    const payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
+    const payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : SECRET_KEY_DEV_MODE);
     if (payload) {
       req.user = payload;
     } else {

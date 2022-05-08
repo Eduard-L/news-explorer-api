@@ -7,13 +7,13 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 
-const { PORT, NODE_ENV } = require('./utils/constants');
+const { PORT, NODE_ENV, MONGO_ADRESS } = require('./utils/constants');
 const { handleErrors } = require('./middlewares/errorHandler');
 const { mainRouter } = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { limiter } = require('./helpers/limiter');
 
-mongoose.connect('mongodb://localhost:27017/newsdb');
+mongoose.connect(MONGO_ADRESS);
 
 
 app.use(limiter);

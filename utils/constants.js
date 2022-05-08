@@ -4,7 +4,7 @@ const User = require('../models/user');
 const Article = require('../models/article');
 
 const {
-  NODE_ENV, JWT_SECRET, SALT = 10, PORT = 3000, MONGO_ADRESS
+  NODE_ENV, JWT_SECRET, SALT = 10, PORT = 3000,
 } = process.env;
 
 const UNAUTHORIZED_MESSAGE = 'Authorization required';
@@ -15,6 +15,8 @@ const NOT_FOUND_MESSAGE = 'resourse not founded';
 const WRONG_LOGIN_MESSAGE = 'password or email are wrong';
 const CONFLICT_ERROR_MESSAGE = 'resourse already excist';
 const PERMISSION_ERROR_MESSAGE = 'permission denied';
+const MONGO_ADRESS = 'mongodb://localhost:27017/newsdb';
+const SECRET_KEY_DEV_MODE = 'dev-secret'
 
 module.exports = {
   NODE_ENV,
@@ -33,4 +35,5 @@ module.exports = {
   bcrypt,
   Article,
   JWT_SECRET,
+  SECRET_KEY_DEV_MODE
 };
